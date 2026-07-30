@@ -1,34 +1,46 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { AlertCircle, CheckCircle2, LoaderCircle, MapPin, Search } from "lucide-react"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  AlertCircle,
+  CheckCircle2,
+  LoaderCircle,
+  MapPin,
+  Search,
+} from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const meetingSearchSchema = z.object({
   origin: z.string().trim().min(2, "출발지는 두 글자 이상 입력해 주세요."),
-  destinationHint: z.string().trim().min(2, "희망 지역은 두 글자 이상 입력해 주세요."),
+  destinationHint: z
+    .string()
+    .trim()
+    .min(2, "희망 지역은 두 글자 이상 입력해 주세요."),
   travelMode: z.enum(["transit", "walk", "car"]),
-})
+});
 
-type MeetingSearchValues = z.infer<typeof meetingSearchSchema>
+type MeetingSearchValues = z.infer<typeof meetingSearchSchema>;
 
 type SearchStatus =
   | { readonly kind: "idle" }
-  | { readonly kind: "success"; readonly message: string }
+  | { readonly kind: "success"; readonly message: string };
 
 const travelModeOptions: readonly {
-  readonly label: string
-  readonly value: MeetingSearchValues["travelMode"]
+  readonly label: string;
+  readonly value: MeetingSearchValues["travelMode"];
 }[] = [
   { label: "대중교통", value: "transit" },
   { label: "도보", value: "walk" },
   { label: "자동차", value: "car" },
-] as const
+] as const;
 
 export function MeetingSearchForm() {
-  const [searchStatus, setSearchStatus] = useState<SearchStatus>({ kind: "idle" })
+  const [searchStatus, setSearchStatus] = useState<SearchStatus>({
+    kind: "idle",
+  });
+
   const {
     formState: { errors, isSubmitting },
     handleSubmit,
@@ -40,18 +52,18 @@ export function MeetingSearchForm() {
       travelMode: "transit",
     },
     resolver: zodResolver(meetingSearchSchema),
-  })
+  });
 
   const submitSearch = async (values: MeetingSearchValues) => {
-    setSearchStatus({ kind: "idle" })
+    setSearchStatus({ kind: "idle" });
     await new Promise<void>((resolve) => {
-      window.setTimeout(resolve, 500)
-    })
+      window.setTimeout(resolve, 500);
+    });
     setSearchStatus({
       kind: "success",
       message: `${values.origin} 기준으로 ${values.destinationHint} 주변 후보를 찾을 준비가 됐습니다.`,
-    })
-  }
+    });
+  };
 
   return (
     <form
@@ -63,8 +75,12 @@ export function MeetingSearchForm() {
           <MapPin aria-hidden="true" size={20} />
         </span>
         <div>
-          <h2 className="text-xl font-semibold tracking-tight">장소 추천 조건</h2>
-          <p className="mt-1 text-sm text-zinc-600">검증된 폼 구조를 확장해 API와 연결하세요.</p>
+          <h2 className="text-xl font-semibold tracking-tight">
+            장소 추천 조건
+          </h2>
+          <p className="mt-1 text-sm text-zinc-600">
+            검증된 폼 구조를 확장해 API와 연결하세요.
+          </p>
         </div>
       </div>
 
@@ -83,7 +99,10 @@ export function MeetingSearchForm() {
             {...register("origin")}
           />
           {errors.origin && (
-            <span className="mt-2 flex items-center gap-1.5 text-sm text-error" id="origin-error">
+            <span
+              className="mt-2 flex items-center gap-1.5 text-sm text-error"
+              id="origin-error"
+            >
               <AlertCircle aria-hidden="true" size={14} />
               <span>{errors.origin.message}</span>
             </span>
@@ -93,7 +112,9 @@ export function MeetingSearchForm() {
         <label className="block">
           <span className="text-sm font-medium">희망 지역</span>
           <input
-            aria-describedby={errors.destinationHint ? "destination-error" : undefined}
+            aria-describedby={
+              errors.destinationHint ? "destination-error" : undefined
+            }
             aria-invalid={Boolean(errors.destinationHint)}
             className={`mt-2 min-h-11 w-full rounded-md border bg-background px-3 text-base outline-none transition-colors focus:ring-2 ${
               errors.destinationHint
@@ -153,10 +174,14 @@ export function MeetingSearchForm() {
           aria-live="polite"
           className="mt-4 flex items-start gap-2 rounded-md bg-muted-surface px-3 py-2 text-sm text-accent-strong"
         >
-          <CheckCircle2 aria-hidden="true" className="mt-0.5 shrink-0" size={16} />
+          <CheckCircle2
+            aria-hidden="true"
+            className="mt-0.5 shrink-0"
+            size={16}
+          />
           <span>{searchStatus.message}</span>
         </p>
       )}
     </form>
-  )
+  );
 }

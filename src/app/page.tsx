@@ -1,4 +1,4 @@
-import { MeetingSearchForm } from "@/features/meeting-search/MeetingSearchForm"
+import { MeetingSearchForm } from "@/features/meeting-search/MeetingSearchForm";
 
 export default function Home() {
   return (
@@ -13,8 +13,8 @@ export default function Home() {
             <span className="block">빠르게 좁혀보세요.</span>
           </h1>
           <p className="mt-6 max-w-xl break-keep text-pretty text-lg leading-8 text-zinc-700">
-            Next.js App Router, TypeScript, Tailwind, Zod, React Hook Form 기반으로 바로 기능을 얹을
-            수 있는 프론트엔드 시작점입니다.
+            Next.js App Router, TypeScript, Tailwind, Zod, React Hook Form
+            기반으로 바로 기능을 얹을 수 있는 프론트엔드 시작점입니다.
           </p>
           <div className="mt-10 grid max-w-xl gap-3 sm:grid-cols-3">
             {["출발지 입력", "조건 정리", "후보 비교"].map((item) => (
@@ -30,5 +30,5 @@ export default function Home() {
         <MeetingSearchForm />
       </section>
     </main>
-  )
+  );
 }
