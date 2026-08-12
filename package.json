@@ -15,6 +15,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.5.7",
+    "@tanstack/react-query": "^5.101.4",
+    "axios": "^1.19.0",
     "lucide-react": "^1.27.0",
     "next": "16.2.12",
     "react": "19.2.4",
@@ -36,5 +38,6 @@
     "react-scan": "^0.5.7",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.2"
-  }
+  },
+  "packageManager": "pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1"
 }
