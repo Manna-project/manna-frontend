@@ -1,9 +1,15 @@
-export const useLogin = () => {
-  const login = ({ id, password }: { id: string; password: string }) => {
-    // 로그인 처리
-  };
+type LoginCredentials = Readonly<{
+  id: string
+  password: string
+}>
+
+export function useLogin() {
+  const login = (credentials: LoginCredentials) => {
+    void credentials
+    // TODO DEBT:auth-contract Replace the prototype with the agreed authentication mutation.
+  }
 
   return {
     login,
-  };
-};
+  }
+}

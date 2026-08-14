@@ -1,4 +1,4 @@
-import LoginForm from "@/features/login/components/LoginForm";
+import LoginForm from "@/features/login/components/LoginForm"
 
 export default function Login() {
   return (
@@ -6,5 +6,5 @@ export default function Login() {
       로그인 페이지 입니다.
       <LoginForm />
     </div>
-  );
+  )
 }

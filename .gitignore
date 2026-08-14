@@ -41,6 +41,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# agent
-AGENTS.md
-DESIGN.md
+# agent-local state
+CLAUDE.local.md
+.claude/settings.local.json
+.react-doctor-report.json
+/reports/

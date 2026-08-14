@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mannamap Frontend
 
-## Getting Started
+여러 참여자의 조건을 바탕으로 약속 장소 후보를 탐색하는 Mannamap의 Next.js 프론트엔드입니다.
 
-First, run the development server:
+## Quick Start
+
+요구 사항은 Node.js 22 이상과 `package.json`의 `packageManager` 필드에 지정된 pnpm 버전입니다.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+./scripts/setup
+cp .env.example .env
+./scripts/dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+개발 서버는 기본적으로 [http://localhost:3000](http://localhost:3000)에서 실행됩니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verification
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+./scripts/verify
+```
 
-## Learn More
+이 명령은 포맷, lint, typecheck, unit test, 아키텍처, 문서, drift, 프로덕션 빌드를 순서대로 검사합니다.
 
-To learn more about Next.js, take a look at the following resources:
+## Repository Guide
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 에이전트와 기여자는 먼저 [AGENTS.md](AGENTS.md)를 읽습니다.
+- 시스템 경계는 [ARCHITECTURE.md](ARCHITECTURE.md)를 확인합니다.
+- 상세 문서 색인은 [docs/README.md](docs/README.md)에 있습니다.
+- 시각 규칙은 [DESIGN.md](DESIGN.md)에 있습니다.
