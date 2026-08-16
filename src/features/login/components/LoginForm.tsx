@@ -52,7 +52,8 @@ function OAuthButton({ provider, label, icon, pendingProvider, onLogin }: OAuthB
   return (
     <button
       type="button"
-      className="group flex min-h-14 w-full items-center gap-4 rounded-[0.9rem] border border-[#e7e7e7] bg-white px-6 text-left text-[1.05rem] font-medium text-[#171717] shadow-[0_2px_0_rgba(19,33,43,0.03)] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#cfdad6] hover:shadow-[0_12px_24px_rgba(19,33,43,0.08)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/20 active:translate-y-0 disabled:cursor-wait disabled:opacity-70 sm:min-h-16 sm:px-7 sm:text-lg"
+      aria-busy={isPending}
+      className="group flex min-h-14 w-full cursor-pointer items-center gap-4 rounded-[0.9rem] border border-[#e7e7e7] bg-white px-6 text-left text-[1.05rem] font-medium text-[#171717] shadow-[0_2px_0_rgba(19,33,43,0.03)] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#cfdad6] hover:shadow-[0_12px_24px_rgba(19,33,43,0.08)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/20 active:translate-y-0 disabled:cursor-wait disabled:opacity-70 sm:min-h-16 sm:px-7 sm:text-lg"
       disabled={pendingProvider !== null}
       onClick={() => onLogin(provider)}
     >
@@ -63,7 +64,9 @@ function OAuthButton({ provider, label, icon, pendingProvider, onLogin }: OAuthB
           icon
         )}
       </span>
-      <span className="flex-1">{isPending ? "로그인 페이지로 이동 중..." : label}</span>
+      <span aria-live="polite" className="flex-1">
+        {isPending ? "로그인 페이지로 이동 중..." : label}
+      </span>
       <span
         aria-hidden="true"
         className="text-lg text-zinc-300 transition-transform duration-200 group-hover:translate-x-1"
@@ -80,9 +83,15 @@ export default function LoginForm() {
   const hasError = searchParams.has("error") || searchParams.has("loginError")
 
   return (
-    <div className="relative z-10 w-full max-w-[31.5rem] rounded-[1.35rem] bg-white/90 p-3 shadow-[0_28px_80px_rgba(34,51,56,0.12)] backdrop-blur-sm sm:p-4">
+    <section
+      aria-labelledby="login-methods-legend"
+      className="relative z-10 w-full max-w-[31.5rem] rounded-[1.35rem] bg-white/90 p-3 shadow-[0_28px_80px_rgba(34,51,56,0.12)] backdrop-blur-sm sm:p-4"
+    >
       <div className="rounded-[1.05rem] bg-white p-6 sm:p-8">
-        <div className="grid gap-3">
+        <fieldset className="grid gap-3" aria-labelledby="login-methods-legend">
+          <legend id="login-methods-legend" className="sr-only">
+            로그인 방법 선택
+          </legend>
           <OAuthButton
             provider="google"
             label="Google로 계속하기"
@@ -97,7 +106,7 @@ export default function LoginForm() {
             pendingProvider={pendingProvider}
             onLogin={login}
           />
-        </div>
+        </fieldset>
 
         {hasError && (
           <p
@@ -113,6 +122,6 @@ export default function LoginForm() {
           <span>로그인 후 약속이 안전하게 저장됩니다</span>
         </p>
       </div>
-    </div>
+    </section>
   )
 }

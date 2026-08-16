@@ -4,7 +4,10 @@ import LoginForm from "@/features/login/components/LoginForm"
 
 export default function Login() {
   return (
-    <main className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden bg-background px-5 py-10 text-foreground sm:px-8 lg:px-12">
+    <main
+      aria-labelledby="login-title"
+      className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden bg-background px-5 py-10 text-foreground sm:px-8 lg:px-12"
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
@@ -55,7 +58,10 @@ export default function Login() {
             </span>
             <span className="text-2xl font-semibold tracking-[-0.04em] text-brand-navy">Manna</span>
           </div>
-          <h1 className="text-balance text-3xl font-semibold tracking-[-0.045em] sm:text-[2.75rem]">
+          <h1
+            id="login-title"
+            className="text-balance text-4xl font-semibold tracking-[-0.045em] sm:text-6xl"
+          >
             친구들과 만나는 가장 좋은 중간 지점
           </h1>
           <p className="mt-3 text-base text-zinc-500 sm:text-lg">
