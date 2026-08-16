@@ -60,7 +60,7 @@ export default function Login() {
           </div>
           <h1
             id="login-title"
-            className="text-balance text-4xl font-semibold tracking-[-0.045em] sm:text-6xl"
+            className="text-balance text-3xl font-semibold tracking-[-0.045em] sm:text-4xl"
           >
             친구들과 만나는 가장 좋은 중간 지점
           </h1>
