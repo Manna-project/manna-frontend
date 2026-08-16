@@ -43,3 +43,5 @@ Mannamap helps people choose a fair, convenient meeting place. The interface sho
 - Every form control has a visible label.
 - Error text is tied to the invalid field through `aria-describedby`.
 - Interactive controls keep at least 44px touch target height.
+- Make it mandatory to apply elements such as cursor: pointer to clickable elements like buttons.
+- Write the markup logic with 100% web accessibility in mind.
