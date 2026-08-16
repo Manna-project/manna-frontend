@@ -50,6 +50,17 @@ chore: {작업 내용} -> 의존성, 코드 운영 관점의 변경
 docs: {작업 내용} -> README 등 문서 작업
 ```
 
+# Before starting all the work
+
+항상 모든 작업을 시작하기 전에, 브랜치를 만들어서 작업을 시작합니다.
+Commit Message Rules 내용을 참고해서, 각 작업 성격에 맞는 브랜치를 만들어서 진행합니다.
+
+예시
+
+- feat/{domain}
+- fix/{domain}
+- refactor/{domain}
+
 # Development Commands
 
 ```bash
