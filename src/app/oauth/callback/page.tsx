@@ -1,5 +1,4 @@
-import { redirect } from "next/navigation"
-import { getOAuthCallbackDestination } from "@/features/login/api/oauthCallback"
+import { OAuthCallback } from "@/features/login/components/OAuthCallback"
 
 type OAuthCallbackPageProps = Readonly<{
   searchParams: Promise<{
@@ -10,5 +9,5 @@ type OAuthCallbackPageProps = Readonly<{
 export default async function OAuthCallbackPage({ searchParams }: OAuthCallbackPageProps) {
   const { error } = await searchParams
 
-  redirect(getOAuthCallbackDestination(error))
+  return <OAuthCallback hasOAuthError={error !== undefined} />
 }

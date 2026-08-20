@@ -8,7 +8,7 @@
 
 ## Current User Flows
 
-장소 검색 폼은 클라이언트 검증과 성공 상태 표현까지만 구현되어 있으며 실제 추천 API에는 연결되지 않았습니다. 로그인 화면은 백엔드 OAuth 시작 엔드포인트(`/api/v1/oauth2/google`, `/api/v1/oauth2/kakao`)로 브라우저를 이동시킵니다. 백엔드가 인증 토큰을 설정한 뒤 `/oauth/callback`으로 보내면 정상 인증은 메인으로 이동하고 OAuth 오류는 로그인 화면에 표시합니다. 온보딩 상태 API가 없으므로 신규 사용자 분기는 아직 수행하지 않습니다. 사용자 목록 조회 hook은 `/users` 응답을 TanStack Query로 관리합니다.
+장소 검색 폼은 클라이언트 검증과 성공 상태 표현까지만 구현되어 있으며 실제 추천 API에는 연결되지 않았습니다. 로그인 화면은 백엔드 OAuth 시작 엔드포인트(`/api/v1/oauth2/google`, `/api/v1/oauth2/kakao`)로 브라우저를 이동시킵니다. 백엔드가 인증 쿠키를 설정한 뒤 `/oauth/callback`으로 보내면 프론트는 `/api/v1/users/me`에서 현재 사용자를 조회합니다. 조회 성공은 메인으로 이동하고 OAuth 또는 세션 오류는 로그인 화면에 표시합니다. 온보딩 상태 필드와 API가 없으므로 신규 사용자 분기는 아직 수행하지 않습니다. 사용자 목록 조회 hook은 `/users` 응답을 TanStack Query로 관리합니다.
 
 ## Product Change Rule
 

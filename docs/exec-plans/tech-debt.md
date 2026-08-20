@@ -2,10 +2,10 @@
 
 ## [auth-contract] Onboarding-aware login contract is incomplete
 
-- Problem: OAuth 시작과 `/oauth/callback` 처리는 구현되어 있지만 현재 사용자와 온보딩 완료 상태를 조회하는 API 계약이 없습니다.
+- Problem: `/api/v1/users/me`로 현재 사용자를 확인하지만 응답에 온보딩 완료 상태가 없고 온보딩 저장 API도 없습니다.
 - Impact: 인증 성공 후 신규 사용자와 기존 사용자를 구분하지 못하고 모두 메인 화면으로 이동합니다.
-- Location: `src/features/login`, `src/app/login`, `src/app/oauth/callback`
-- Suggested Fix: 온보딩 상태 API 계약이 확정되면 Zod 응답 schema와 TanStack Query hook을 추가하고 콜백에서 `/` 또는 `/onboarding`으로 분기합니다.
+- Location: `src/entities/currentUser.schema.ts`, `src/features/login`, `src/app/oauth/callback`
+- Suggested Fix: 현재 사용자 응답에 온보딩 상태를 추가하고 저장 API 계약이 확정되면 콜백에서 `/` 또는 `/onboarding`으로 분기합니다.
 - Priority: High
 
 ## [meeting-api] Meeting recommendation API is not connected
