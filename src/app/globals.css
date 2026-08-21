@@ -6,6 +6,7 @@
   --muted-surface: #f3f0ea;
   --accent: #1f7a4d;
   --accent-strong: #155c3a;
+  --brand-navy: #173b60;
   --border-soft: #ded8cc;
   --error: #b42318;
 }
@@ -16,6 +17,7 @@
   --color-muted-surface: var(--muted-surface);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
+  --color-brand-navy: var(--brand-navy);
   --color-border-soft: var(--border-soft);
   --color-error: var(--error);
   --font-sans: var(--font-geist-sans);

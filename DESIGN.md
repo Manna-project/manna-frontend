@@ -18,6 +18,7 @@ Mannamap helps people choose a fair, convenient meeting place. The interface sho
 - Muted surface: `#f3f0ea`
 - Accent: transit green `#1f7a4d`
 - Accent strong: `#155c3a`
+- Brand navy: `--brand-navy`, `#173b60`, used for the Mannamap wordmark to match the supplied location icon.
 - Border: `#ded8cc`
 - Error: `#b42318`
 
@@ -30,6 +31,7 @@ Mannamap helps people choose a fair, convenient meeting place. The interface sho
 
 ## 5. Primitives
 
+- Brand mark: `public/mannamap-icon.png` inside a clipped 36px wrapper so the source image's black outer pixels do not appear in the UI.
 - Primary button: green fill, 44px minimum height, visible focus ring.
 - Secondary link/button: ink text with subtle underline or border.
 - Input/select: bordered neutral field, 44px minimum height, clear error text.
@@ -41,3 +43,5 @@ Mannamap helps people choose a fair, convenient meeting place. The interface sho
 - Every form control has a visible label.
 - Error text is tied to the invalid field through `aria-describedby`.
 - Interactive controls keep at least 44px touch target height.
+- Make it mandatory to apply elements such as cursor: pointer to clickable elements like buttons.
+- Write the markup logic with 100% web accessibility in mind.
