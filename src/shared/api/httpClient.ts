@@ -3,6 +3,7 @@ import { clientEnv } from "@/shared/config/env"
 
 export const httpClient = axios.create({
   baseURL: clientEnv.NEXT_PUBLIC_API_BASE_URL,
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },

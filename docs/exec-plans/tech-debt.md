@@ -1,11 +1,11 @@
 # Technical Debt
 
-## [auth-contract] Login contract is not implemented
+## [auth-contract] Onboarding-aware login contract is incomplete
 
-- Problem: 로그인 hook은 현재 입력을 반환하는 초기 prototype이며 인증 API 계약과 session 저장 정책이 없습니다.
-- Impact: `/login`은 실제 인증을 수행하지 않습니다.
-- Location: `src/features/login`, `src/app/login`
-- Suggested Fix: 백엔드 인증 계약과 cookie 전략을 확정한 뒤 Zod request/response schema, mutation, 실패 상태, contract test를 추가합니다.
+- Problem: `/api/v1/users/me`로 현재 사용자를 확인하지만 응답에 온보딩 완료 상태가 없고 온보딩 저장 API도 없습니다.
+- Impact: 인증 성공 후 신규 사용자와 기존 사용자를 구분하지 못하고 모두 메인 화면으로 이동합니다.
+- Location: `src/entities/currentUser.schema.ts`, `src/features/login`, `src/app/oauth/callback`
+- Suggested Fix: 현재 사용자 응답에 온보딩 상태를 추가하고 저장 API 계약이 확정되면 콜백에서 `/` 또는 `/onboarding`으로 분기합니다.
 - Priority: High
 
 ## [meeting-api] Meeting recommendation API is not connected
