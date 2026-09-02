@@ -1,13 +1,15 @@
 "use client"
 
-import { ChevronDown, Mail } from "lucide-react"
+import { ChevronDown, LoaderCircle, LogOut, Mail } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useCurrentUser } from "@/features/login/hooks/useCurrentUser"
+import { useLogout } from "@/features/login/hooks/useLogout"
 import { getUserDisplayName, getUserInitial } from "./userIdentity"
 
 export function AppHeader() {
-  const currentUserQuery = useCurrentUser()
+  const logoutMutation = useLogout()
+  const currentUserQuery = useCurrentUser(!logoutMutation.isPending && !logoutMutation.isSuccess)
 
   return (
     <header className="border-b border-border-soft/80 bg-background/90 backdrop-blur-md">
@@ -94,6 +96,29 @@ export function AppHeader() {
                 <Mail aria-hidden="true" className="h-4 w-4 shrink-0 text-accent" />
                 <span className="truncate">{currentUserQuery.data.email}</span>
               </p>
+              <div className="my-4 h-px bg-border-soft/80" />
+              <button
+                type="button"
+                onClick={() => logoutMutation.mutate()}
+                disabled={logoutMutation.isPending}
+                aria-busy={logoutMutation.isPending}
+                className="flex min-h-11 w-full cursor-pointer items-center justify-between rounded-lg px-3 text-sm font-semibold text-zinc-700 transition-colors hover:bg-muted-surface hover:text-brand-navy focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/20 disabled:cursor-wait disabled:opacity-60"
+              >
+                <span>{logoutMutation.isPending ? "로그아웃 중" : "로그아웃"}</span>
+                {logoutMutation.isPending ? (
+                  <LoaderCircle
+                    aria-hidden="true"
+                    className="h-4 w-4 animate-spin motion-reduce:animate-none"
+                  />
+                ) : (
+                  <LogOut aria-hidden="true" className="h-4 w-4" />
+                )}
+              </button>
+              {logoutMutation.isError && (
+                <p role="alert" className="mt-2 break-keep px-3 text-xs leading-5 text-red-700">
+                  로그아웃에 실패했어요. 다시 시도해 주세요.
+                </p>
+              )}
             </section>
           </details>
         )}
