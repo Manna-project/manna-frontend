@@ -1,10 +1,10 @@
 import { HttpResponse, http } from "msw"
 import { setupServer } from "msw/node"
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest"
-import { clientEnv } from "@/shared/config/env"
+import { httpClient } from "@/shared/api/httpClient"
 import { getCurrentUser } from "./currentUser"
 
-const currentUserEndpoint = `${clientEnv.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/me`
+const currentUserEndpoint = httpClient.getUri({ url: "/api/v1/users/me" })
 
 const currentUserResponse = {
   entityId: "809f5da1-3626-42a0-a135-3a5f6f71c219",

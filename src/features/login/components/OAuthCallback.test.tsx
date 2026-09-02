@@ -5,7 +5,7 @@ import { cleanup, render, waitFor } from "@testing-library/react"
 import { HttpResponse, http } from "msw"
 import { setupServer } from "msw/node"
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest"
-import { clientEnv } from "@/shared/config/env"
+import { httpClient } from "@/shared/api/httpClient"
 import { OAuthCallback } from "./OAuthCallback"
 
 const { replace } = vi.hoisted(() => ({
@@ -16,7 +16,7 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({ replace }),
 }))
 
-const currentUserEndpoint = `${clientEnv.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/me`
+const currentUserEndpoint = httpClient.getUri({ url: "/api/v1/users/me" })
 
 const currentUserResponse = {
   entityId: "809f5da1-3626-42a0-a135-3a5f6f71c219",
